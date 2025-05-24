@@ -5,15 +5,55 @@
   home.username = "cyfraka";
   home.homeDirectory = "/home/cyfraka";
 
+
+  ##################################################################################
   # GNOME Desktop: Wallpaper
   dconf.settings = {
     "org/gnome/desktop/background" = {
       # Use a portable path referencing homeDirectory
       picture-uri = "file://${config.home.homeDirectory}/.dotfiles/80s.jpg";
       picture-options = "zoom";
+    };  
+  };
+
+  #Gnome Custom keybindings
+  dconf.settings = {
+  "org/gnome/settings-daemon/plugins/media-keys" = {
+    custom-keybindings = [
+      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
+    ];
+  };
+
+  "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+    name = "Kitty (Win+A)";
+    command = "kitty";
+    binding = "<Super>a";
+  };
+
+  "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+    name = "Kitty (Win+Enter)";
+    command = "kitty";
+    binding = "<Super>Return";
+  };
+
+  "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+    name = "Close Window (Win+Q)";
+    command = "xdotool getactivewindow windowkill";
+    binding = "<Super>q";
+  };
+
+  "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+    name = "Firefox (Win+W)";
+    command = "firefox";
+    binding = "<Super>w";
     };
   };
 
+
+  ###################################################################################
   # Git Configuration
   programs.git = {
     enable = true;
@@ -24,6 +64,8 @@
     };
   };
 
+
+  ##################################################################################
   # Vim Configuration
   programs.vim = {
     enable = true;
@@ -45,6 +87,8 @@
     '';
   };
 
+
+  ##################################################################################
   # Kitty Terminal Configuration
   programs.kitty = {
     enable = true;
@@ -79,7 +123,7 @@
       # shell = "zsh -l -c 'fastfetch; exec zsh -l'";
     };
   };
-
+  ###################################################################################
   # Bash Configuration
   programs.bash = {
     enable = true;
@@ -129,6 +173,8 @@
     '';
   };
 
+
+  ################################################################################
   # Tmux Configuration
   programs.tmux = {
     enable = true;
@@ -163,8 +209,10 @@
     '';
   };
 
+
+  ##################################################################################
   # Home Manager Release Version
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 
   # User Packages (Uncomment to add more)
   home.packages = [
