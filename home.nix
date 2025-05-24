@@ -6,6 +6,7 @@
   home.username = "cyfraka";
   home.homeDirectory = "/home/cyfraka";
 
+  #GIT Settings
   programs.git = {
     enable = true;
     userName = "Cyfraka";
@@ -14,6 +15,119 @@
       init.defaultBrnch = "main";
     };
   };
+
+  #VIM Settings
+  programs.vim = {
+    enable = true;
+    extraConfig = ''
+      set nocompatible
+      syntax on
+      set shortmess+=I
+      set number
+      set relativenumber
+      set laststatus=2
+      set backspace=indent,eol,start
+      set hidden
+      set ignorecase
+      set smartcase
+      set incsearch
+      nmap Q <Nop>
+      set noerrorbells visualbell t_vb=
+      set mouse+=a
+    '';
+  };
+
+  #KITTY Settings
+  programs.kitty = {
+    enable = true;
+    settings = {
+      # Fonts
+      font_family = "Fira Mono";
+      font_size = 10;
+
+      # Cursor
+      cursor_shape = "underline";
+
+      # Mouse and Selection
+      mouse_hide_wait = 3.0;
+      url_prefixes = "http https file ftp";
+      detect_urls = "yes";
+      copy_on_select = "yes";
+      focus_follows_mouse = "yes";
+
+      # Window & Appearance
+      background_opacity = "0.5";
+      hide_window_decorations = "yes";
+      confirm_os_window_close = 0;
+
+      # Terminal Bell
+      enable_audio_bell = "no";
+
+      # Color scheme (Argonaut)
+      background = "#0d0f18";
+      foreground = "#fffaf3";
+      cursor = "#ff0017";
+      selection_background = "#002a3a";
+      color0  = "#222222";
+      color8  = "#444444";
+      color1  = "#ff000f";
+      color9  = "#ff273f";
+      color2  = "#8ce00a";
+      color10 = "#abe05a";
+      color3  = "#ffb900";
+      color11 = "#ffd141";
+      color4  = "#008df8";
+      color12 = "#0092ff";
+      color5  = "#6c43a5";
+      color13 = "#9a5feb";
+      color6  = "#00d7eb";
+      color14 = "#67ffef";
+      color7  = "#ffffff";
+      color15 = "#ffffff";
+      selection_foreground = "#0d0f18";
+
+
+      # If you use bash:
+      shell = "bash -l -c 'fastfetch; exec bash -l'";
+
+      # If you use zsh, change to:
+      # shell = "zsh -l -c 'fastfetch; exec zsh -l'";
+
+      };
+    };
+
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+      # Send prefix
+      set-option -g prefix C-a
+      unbind-key C-a
+      bind-key C-a send-prefix
+
+      # Use Alt-arrow keys to switch panes
+      bind -n M-Left select-pane -L
+      bind -n M-Right select-pane -R
+      bind -n M-Up select-pane -U
+      bind -n M-Down select-pane -D
+
+      # Shift arrow to switch windows
+      bind -n S-Left previous-window
+      bind -n S-Right next-window
+
+      # Mouse mode
+      setw -g mouse on
+
+      # Set Status bar color
+      set-option -g status-style bg=blue
+
+      # Set easier window split keys
+      bind-key v split-window -h
+      bind-key h split-window -v
+
+      # Easy config reload
+      bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded."
+    '';
+  };  
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
