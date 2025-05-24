@@ -109,6 +109,12 @@
     discord
   ];
 
+  #No Garbige Collection and Max 3 Generation Copies
+  nix.settings.keep-outputs = true;
+  nix.settings.keep-derivations = true;
+  nix.gc.automatic = true;
+  nix.gc.options = "--delete-older-than 10d"; # or another timespan
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
