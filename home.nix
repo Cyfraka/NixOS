@@ -6,6 +6,17 @@
   home.username = "cyfraka";
   home.homeDirectory = "/home/cyfraka";
 
+  # Gnome Wallpaper 80s
+  dconf.settings = {
+    "org/gnome/desktop/background" = {
+      picture-uri = "file://home/Cyfraka/.dotfiles/80s.jpg";
+      picture-options = "zoom"; # or "centered", "scaled", etc.
+    };
+  };
+
+  # Gnome Profile Pic Cyfraka
+  #home.file."cyfraka-profile.jpg".source = home/Cyfraka/.dotfiles/Cyfraka.jpg;
+
   #GIT Settings
   programs.git = {
     enable = true;
@@ -88,7 +99,7 @@
 
 
       # If you use bash:
-      shell = "bash -l -c 'fastfetch; exec bash -l'";
+      #shell = "bash -l -c 'fastfetch; exec bash -l'";
 
       # If you use zsh, change to:
       # shell = "zsh -l -c 'fastfetch; exec zsh -l'";
@@ -96,6 +107,64 @@
       };
     };
 
+  # BashRC Settings
+  programs.bash = {
+    enable = true;
+
+    # Set up aliases
+    shellAliases = {
+      # Kitty SSH fix
+      ssh = ''[[ "$TERM" == "xterm-kitty" ]] && kitty +kitten ssh || ssh'';
+    };
+
+    # Set session variables or env
+    sessionVariables = {
+      # You can add SYSTEMD_PAGER here if you want to uncomment it
+      # SYSTEMD_PAGER = "";
+    };
+
+    # Inject the rest of your .bashrc
+    bashrcExtra = ''
+      # Source global definitions
+      if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+      fi
+
+      # User specific environment
+      if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+      then
+          PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+      fi
+      export PATH
+
+      # Kitty - fix SSH (see shellAliases for function version)
+      [[ "$TERM" == "xterm-kitty" ]] && alias ssh="kitty +kitten ssh"
+
+      # User specific aliases and functions from ~/.bashrc.d
+      if [ -d ~/.bashrc.d ]; then
+        for rc in ~/.bashrc.d/*; do
+          if [ -f "$rc" ]; then
+            . "$rc"
+          fi
+        done
+      fi
+
+      unset rc
+
+      # Custom prompt
+      PS1='[\t \[\e[01;34m\]\u\[\e[0m\]@\[\e[01;34m\]\h\[\e[0m\] \W]\\$ '
+
+      # Set tmux auto attach (when SSH and not already in tmux)
+      if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+        tmux attach-session -t XMR || tmux new-session -s XMR
+      fi
+
+      # Fastfetch
+      fastfetch
+    '';
+  };
+
+  #TMUX Setting
   programs.tmux = {
     enable = true;
     extraConfig = ''
