@@ -1,7 +1,3 @@
-Here’s a proposed README content structure for your Cyfraka/NixOS repository, tailored to your codebase and the conventions of NixOS configuration repos:
-
----
-
 # Cyfraka’s NixOS Configuration
 
 This repository contains my personal NixOS system and user (Home Manager) configuration files, designed for my ThinkPad X1 Carbon. It leverages Nix Flakes and Home Manager for reproducible, declarative system setup.
