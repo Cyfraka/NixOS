@@ -78,8 +78,4 @@ This repository contains my personal NixOS system and user (Home Manager) config
 
 ## License
 
-Specify your license here (if any).
-
----
-
-Let me know if you want to expand any section, add usage tips, or include more details (e.g., screenshots, package lists, troubleshooting, etc.).
+This repo is licensed under the MIT License.
