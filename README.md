@@ -78,4 +78,4 @@ This repository contains my personal NixOS system and user (Home Manager) config
 
 ## License
 
-This repo is licensed under the MIT License.
+This repo is licensed under the [MIT License](https://github.com/NixOS/nixpkgs/blob/master/COPYING).
