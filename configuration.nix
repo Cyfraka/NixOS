@@ -57,7 +57,7 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  #services.printing.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -107,7 +107,25 @@
     fastfetch
     signal-desktop
     discord
+    qemu_kvm
   ];
+
+  #Gnom-Boxes settings
+  virtualisation.libvirtd = {
+  enable = true;
+  qemu = {
+    package = pkgs.qemu_kvm;
+    runAsRoot = true;
+    swtpm.enable = true;
+    ovmf = {
+      enable = true;
+      packages = [(pkgs.OVMF.override {
+        secureBoot = true;
+        tpmSupport = true;
+        }).fd];
+      };
+    };
+  };
 
   #No Garbige Collection and Max 3 Generation Copies
   nix.settings.keep-outputs = true;
