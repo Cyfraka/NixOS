@@ -25,6 +25,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Enable VPN
+  services.tailscale.enable = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
