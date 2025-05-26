@@ -112,6 +112,8 @@
     discord
     qemu_kvm
     tailscale
+    cmatrix
+    appimage-run
   ];
 
   #Gnom-Boxes settings
