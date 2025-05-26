@@ -108,6 +108,7 @@
     signal-desktop
     discord
     qemu_kvm
+    tailscale
   ];
 
   #Gnom-Boxes settings
