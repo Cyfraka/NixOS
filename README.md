@@ -1,19 +1,19 @@
 # Cyfraka’s NixOS Configuration
 
-This repository contains my personal NixOS system and user (Home Manager) configuration files, designed for my ThinkPad X1 Carbon. It leverages Nix Flakes and Home Manager for reproducible, declarative system setup.
+This repository contains my personal NixOS system and user (Home Manager) configuration files, designed for multiple ThinkPad models (including X1 Carbon and X230). It leverages Nix Flakes and Home Manager for reproducible, declarative system setup.
 
 ## Features
 
 - **System Configuration**:  
-  - Full system settings in `configuration.nix`
+  - Full system settings in `configuration.nix` (and device-specific variants)
   - GNOME desktop with custom keybindings
   - Networking via NetworkManager
   - Pipewire audio, CUPS printing, and locale for Europe/Warsaw
-  - Common packages: `vim`, `kitty`, `git`, `gnome-boxes`, `tmux`, `wget`, `fastfetch`, `signal-desktop`, `discord`
+  - Common packages: `vim`, `kitty`, `git`, `gnome-boxes`, `tmux`, `wget`, `fastfetch`, `discord`
   - Automatic garbage collection and unfree package support
 
 - **Hardware Configuration**:  
-  - Managed by `hardware-configuration.nix`
+  - Managed by `hardware-configuration.nix` (and device-specific variants)
   - LUKS disk encryption and hardware-specific settings
 
 - **Home Manager**:  
@@ -30,14 +30,17 @@ This repository contains my personal NixOS system and user (Home Manager) config
 
 ```
 .
-├── configuration.nix           # Main NixOS system configuration
-├── hardware-configuration.nix  # Auto-generated hardware config
-├── home.nix                    # Home Manager user config
-├── flake.nix                   # Nix Flake definition
-├── flake.lock                  # Flake lock file (pin versions)
-├── README.md                   # This file
-├── 80s.jpg, Cyfraka.jpg        # Wallpaper and images
+├── configuration.nix             # Main NixOS system configuration (X1 Carbon)
+├── configuration-x230.nix        # X230-specific configuration (if present)
+├── hardware-configuration.nix    # Auto-generated hardware config (X1 Carbon)
+├── hardware-x230.nix             # X230-specific hardware config (if present)
+├── home.nix                      # Home Manager user config
+├── flake.nix                     # Nix Flake definition
+├── flake.lock                    # Flake lock file (pin versions)
+├── README.md                     # This file
+├── 80s.jpg, Cyfraka.jpg          # Wallpaper and images
 ```
+*Note: File names above may vary. Update as needed to reflect actual repo structure.*
 
 ## Getting Started
 
@@ -55,9 +58,14 @@ This repository contains my personal NixOS system and user (Home Manager) config
    ```
 
 2. **Switch to your configuration (with flakes):**
-   ```sh
-   sudo nixos-rebuild switch --flake .#ThinkPad-X1-Carbon
-   ```
+   - For X1 Carbon:
+     ```sh
+     sudo nixos-rebuild switch --flake .#ThinkPad-X1-Carbon
+     ```
+   - For X230 (if applicable):
+     ```sh
+     sudo nixos-rebuild switch --flake .#ThinkPad-X230
+     ```
 
 3. **For Home Manager:**
    ```sh
@@ -66,9 +74,9 @@ This repository contains my personal NixOS system and user (Home Manager) config
 
 ### Customization
 
-- Edit `configuration.nix` for system-wide changes.
+- Edit `configuration.nix` or device-specific config for system-wide changes.
 - Edit `home.nix` for user-specific (Home Manager) configuration.
-- Update images or dotfiles as needed.
+- Update images, dotfiles, or add packages as needed (e.g., `tailscale`).
 
 ## References
 
