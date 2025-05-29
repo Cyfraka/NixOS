@@ -14,8 +14,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-a5f54174-932c-4146-a185-4d8ae6f55c8a".device = "/dev/disk/by-uuid/a5f54174-932c-4146-a185-4d8ae6f55c8a";
-  networking.hostName = "ThinkPad-X1-Carbon"; # Define your hostname.
+  boot.initrd.luks.devices."luks-2a786fc6-5121-492c-90e0-335371a84eaa".device = "/dev/disk/by-uuid/2a786fc6-5121-492c-90e0-335371a84eaa";
+  boot.initrd.luks.devices."luks-d13ee735-4cd4-483c-9295-ae52296064dc".device = "/dev/disk/by-uuid/d13ee735-4cd4-483c-9295-ae52296064dc";
+  networking.hostName = "ThinkPad-X230"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
