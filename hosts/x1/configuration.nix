@@ -113,6 +113,13 @@
     qemu_kvm
     tailscale
     cmatrix
+    asciiquarium-transparent
+    cowsay
+    cava
+    cbonsai
+    sl
+    yt-dlp
+    youtube-tui
     appimage-run
   ];
 
