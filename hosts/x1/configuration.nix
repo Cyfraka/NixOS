@@ -122,7 +122,6 @@
     cbonsai
     sl
     yt-dlp
-    prismlauncher
     steam
     steam-unwrapped
     steam-run
