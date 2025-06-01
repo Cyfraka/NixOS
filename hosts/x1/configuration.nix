@@ -122,7 +122,6 @@
     cbonsai
     sl
     yt-dlp
-    minecraft
     appimage-run
   ];
 
