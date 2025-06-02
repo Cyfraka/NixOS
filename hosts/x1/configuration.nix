@@ -96,9 +96,12 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
+  
   # Allow Broken packages
-  nixpkgs.config.allowBroken = true; 
+  #nixpkgs.config.allowBroken = true; 
+  
+  # Allow Flatpaks 
+  services.flatpak.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -126,8 +129,8 @@
     steam-unwrapped
     steam-run
     appimage-run
+    flatpak
   ];
-
 
   # Steam 
   programs.steam = {
