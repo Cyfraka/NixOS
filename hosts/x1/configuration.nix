@@ -107,6 +107,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
+    neovim
     kitty
     git
     gnome-boxes
